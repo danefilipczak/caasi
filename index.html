@@ -1,0 +1,115 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Caasi</title>
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <!-- uncomment lines below to include extra p5 libraries -->
+  <script language="javascript" src="libraries/p5.dom.js"></script>
+ <script language="javascript" src="libraries/p5.sound.js"></script>
+ <script language="javascript" type="text/javascript" src="particle_1.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch_2.js"></script>
+  <script language="javascript" type="text/javascript" src="button_1.js"></script>
+   <script language="javascript" type="text/javascript" src="slider_1.js"></script>
+   <script language="javascript" src="libraries/soundfont-player.min.js"></script>
+   <script type="text/javascript">
+function IgnoreAlpha(e)
+{
+    if (!e)
+    {
+        e = window.event ;
+    }
+    if (e.keyCode >= 65 && e.keyCode <= 90) // A to Z
+    {
+        e.returnValue=false;
+        e.cancel = true;
+    }
+}
+</script>
+  <!-- this line removes any default padding and style. you might only need one of these values set. -->
+  <style> body {padding: 0; margin: 0; font-family:Consolas, monospace;}
+  #settings {
+            width:120px;
+            height:380px;
+            position: absolute;
+            right: 10px;
+            top: 160px;
+            padding: 0px 10px 10px 10px;
+            background: rgba(0, 0, 0, 0.3);
+          /*  border: thin solid rgba(0, 0, 0, 0.6);*/
+            /*color:# #eeeeee;*/
+            font-family:monospace;
+            font-size: 12px;
+            /*cursor: pointer;*/
+       
+            display:block;
+         } 
+
+        select{
+          font-family:monospace;
+        }
+
+        
+         </style>
+</head>
+
+<body>
+   <div id='settings' style="visibility:hidden;">
+    <h3>sounds</h3>
+        floor<br>
+        <select id="bvoiceselector" onchange="changeBvoice()" onkeydown="IgnoreAlpha(event);">
+           <option selected value="acoustic_grand_piano">piano</option>
+          <option value="kalimba">kalimba</option>
+          <option value="synth_drum">synth drum</option>
+          <option value="slap_bass_2">slap bass</option>
+         
+          <option value="voice_oohs">oohs</option>
+          <option value="melodic_tom">tomtom</option>
+
+          <option value="marimba">marimba</option>
+          </select> 
+        
+        <a id ='bvoiceloading' style="visibility:hidden;">loading...</a>
+<br>
+          left<br>
+        <select id="lvoiceselector" onchange="changeLvoice()" onkeydown="IgnoreAlpha(event);">
+           <option value="acoustic_grand_piano">piano</option>
+          <option value="kalimba">kalimba</option>
+          <option selected value="flute">flute</option>
+          <option value="slap_bass_2">slap bass</option>
+          <option value="voice_oohs">oohs</option>
+          <option value="viola">viola</option>
+          <option value="french_horn">horn</option>
+          </select> 
+        
+        <a id ='lvoiceloading' style="visibility:hidden;">loading...</a>
+
+            <br> right<br>
+        <select id="rvoiceselector" onchange="changeRvoice()" onkeydown="IgnoreAlpha(event);">
+           <option value="acoustic_grand_piano">piano</option>
+          <option value="kalimba">kalimba</option>
+          <option value="synth_drum">synth drum</option>
+          <option value="slap_bass_2">slap bass</option>
+          <option value="french_horn">horn</option>
+          <option value="viola">viola</option>
+         
+          <option selected value="english_horn">cor anglais</option>
+          <option value="melodic_tom">tomtom</option>
+          </select> 
+        
+        <a id ='rvoiceloading' style="visibility:hidden;">loading...</a>
+        <h3>tonality</h3>
+
+        <form>
+        <input type="radio" name="tonality" value="maurice"> maurice<br>
+        <input type="radio" name="tonality" value="claude"> claude<br>
+        <input type="radio" name="tonality" value="bela" checked> bela
+        </form>
+        <h3>time</h3>
+    quantize<input id="quantcheck" type="checkbox" checked="checked">
+    <br>
+    <input type="range" id="pulse" min = "50" max = "1000" value="200" style="width:70;" onchange = "quantize()">
+    <br>pulse rate
+
+      </div>
+</body>
+</html>
