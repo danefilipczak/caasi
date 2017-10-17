@@ -28,7 +28,7 @@ var angle=0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  textFont("Consolas");
+  textFont("monospace");
   textSize(12);
   ibutton = new Button(width-110, 10, 100, 40, ibuttonstring);
   sbutton = new Button(width-110, 130, 100, 15, sbuttonstring);
